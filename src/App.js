@@ -1,23 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from "react-router-dom"
+import { Home } from "./home"
 
-function MyButton() {
-  return (
-    <button>
-      I'm a button
-    </button>
-  );
-}
+
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>
-      <h1>Welcome to my app</h1>
-      <MyButton />
-    </div>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" exact component={Home} />
+      <Route path="/about" render={() => <About></About>} />
+      <Route path="/inventory" children={() => <Inventory></Inventory>} />
+      <Route path="/contact" children={() => <Contact></Contact>} />
+    </Routes>
+    
   );
 }
 
