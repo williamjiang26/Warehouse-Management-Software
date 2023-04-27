@@ -4,7 +4,7 @@ import './App.css';
 function MyButton() {
   return (
     <button>
-      I'm a button.
+      I'm a button
     </button>
   );
 }
@@ -13,9 +13,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-          <h1>Welcome to my app</h1>
-            <MyButton />
-        </div>
+      <h1>Welcome to my app</h1>
+      <MyButton />
+    </div>
       </header>
     </div>
   );
