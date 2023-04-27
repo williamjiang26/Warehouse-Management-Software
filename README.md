@@ -1,31 +1,103 @@
-# Create React App
+# WAREHOUSE INVENTORY MANAGEMENT SYSTEM (WIMS)
 
-This directory is a brief example of a [Create React App](https://github.com/facebook/create-react-app) site that can be deployed to Vercel with zero configuration.
+## Overview
 
-## Deploy Your Own
+WIMS is a custom login system for warehouse operations. WIMS is a web app that allows warehouse staff to get updated on their daily assignments, easily locate items using a map, document and update their product's processing status and gives a clear overview for the warehouse manager to allocate tasks to their staff.
 
-Deploy your own Create React App project with Vercel.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/create-react-app&template=create-react-app)
 
-_Live Example: https://create-react-template.vercel.app/_
 
-## Available Scripts
+## Data Model
+The application will store Users, Inventory Directory, and a mapping/layout of warehouse space
 
-In the project directory, you can run:
 
-### `npm start`
+* managers can have access to multiple users
+* each staff has a list of tasks (via forms)
+* users have access to inventory directory and warehouse map 
+* each list can have multiple items (by embedding)
+* users can have multiple lists (via references)
 
-Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+An Example User:
 
-The page will reload when you make changes. You may also see any lint errors in the console.
+```javascript
+{
+  username: "manager",
+  password: // a login password hash,
+  staff: // an array of references to staff lists
+}
+{
+  username: "staff",
+  password: // a login password hash,
+  tasks: // an array of tasks
+}
+{
+  product id: // string
+  status: // an array of status options(ie. raw, processing, processed, ready to ship, shipped, collected payment)
+  task: [
+    { name: "mike", time: "9:20", task: 'spraypaint black', completed: false},
+    { name: "alice", time: "9:20", task: 'installed handle', completed: false},
+    { name: "bob", time: "10:00", task: 'boxed and labeled package', completed: true},
+  ] // name of person , time started on product, details of task, completed status
+}
+```
 
-### `npm test`
+## [Link to Commented First Draft Schema](db.mjs) 
 
-Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Wireframes
+/login - page for user login
 
-Builds the app for production to the `build` folder.
+![list create](documentation/Login.png)
 
-It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
+/manager - page for manager 
+
+![list create](documentation/M1.png)
+![list create](documentation/M2.png)
+![list create](documentation/M3.png)
+![list create](documentation/M4.png)
+
+/Data - analytics page for manager
+![list create](documentation/Data.png)
+
+/staff - page for staff
+
+![list](documentation/S1.png)
+
+## Site map
+![list](documentation/Sitemap.png)
+
+## User Stories or Use Cases
+1. as non-registered user, I can register a new account with the site
+2. as a user, I can log in to the site, view the inventory, view the warehouse layout, and other shared tools.
+3. as a manager, I can: 
+  - create a new staff, task, invoice(for the customer)
+  - drop tasks to staff
+  - move tasks between staff
+  - see which parts of the warehouse are underallocated
+  - see what supplies I am low on
+  - pay my workers
+  - monitor my workers hours and breaks
+4. as a Staff, I can:
+  - view all of the tasks that I am assigned for the day
+  - see where things are located and the optimal route to get there
+  - I need to work with an easy interface with minimal customization where I can easily see what my manager has assigned me
+5. As a new User:
+  I can create a new warehouse
+ 
+
+
+## Research Topics
+* ( 5 points) react.js for frontend // challenging library to learn
+  * drag and drop
+  * drop down menus
+* ( 2 points) research optimal user interfaces
+* ( 2 points) collect payments and link bank accounts
+* ( 1 points) Design a warehouse layout map
+* ( 1 points) Secure logins // might not get to
+
+## [Link to Initial Main Project File](app.mjs) 
+
+## Annotations / References Used
+1. 
+2.
+
